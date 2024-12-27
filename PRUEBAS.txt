@@ -1,0 +1,113 @@
+#######################################################################################################################
+#######################################################################################################################
+EN LA EJECUCIÓN DE ESTAS PRUEBAS DEL CLIENTE, SE ENTIENDE QUE SE EJECUTAN TODOS LOS COMANDOS DE MANERA SECUENCIAL
+#######################################################################################################################
+#######################################################################################################################
+
+
+--AÑADIR TRIPS CON ÉXITO [FUNCIONAL 100%]
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-addExc 'A Coruña' 'Ciudad Vieja' '2022-08-15 11:00' 20 10"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-addExc 'Santiago' 'Visita Catedral' '2022-09-25 11:00' 25 30"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-addExc 'A Coruña' 'Hércules' '2022-08-20 11:00' 18 20"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-addExc 'A Coruña' 'Día de Playas' '2022-10-25 11:00' 40 50"
+
+
+--AÑADIR TRIPS SIN ÉXITO [FUNCIONAL 100%] (EXCEPCIONES INCLUIDAS)
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-addExc ' ' 'Casco Histórico' '2022-08-14 11:00' 25 30"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-addExc 'Santiago' ' ' '2022-08-14 11:00' 25 30"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-addExc 'Santiago' 'Casco Histórico' '2021-08-14 11:00' 25 30"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-addExc 'Santiago' 'Casco Histórico' '2022-08-14 11:00' -2 30"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-addExc 'Santiago' 'Casco Histórico' '2022-08-14 11:00' 25 0"
+
+
+--AÑADIR BOOKINS CON ÉXITO [FUNCIONAL 100%]
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-reserve 'user1@udc.es' 1 '0123456789111111' 5"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-reserve 'user2@udc.es' 1 '0123456789222222' 4"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-reserve 'user1@udc.es' 3 '0123456789111111' 2"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-reserve 'user3@udc.es' 4 '0123456789333333' 3"
+
+
+--AÑADIR BOOKINS SIN ÉXITO [FUNCIONAL 100%] (EXCEPCIONES INCLUIDAS)
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-reserve 'user3@udc.es' 1 '0123456789333333' 3"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-reserve 'user4@udc.es' 9 '0123456789444444' 3"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-reserve 'user4@udc.es' 2 '0123456789444444' 6"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-reserve 'user4@udc.es' 2 '0123456789' 2"
+
+
+[SENTENCIA QUE EJECUTÉ DESDE EL SQL WORKBENCH]
+UPDATE ws.trip SET tripDate='2021-08-25 11:00' WHERE tripId=4;
+
+
+--AÑADIR BOOKIN SIN ÉXITO [FUNCIONAL 100%] (EXCEPCIÓN INCLUIDA)
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-reserve 'user4@udc.es' 4 '0123456789333333' 2"
+
+
+
+--ACTUALIZAR TRIPS CON ÉXITO [FUNCIONAL 100%]
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-updateExc 3 'A Coruña' 'Visita Torre de Hércules' '2022-10-20 11:00' 25 10"
+
+
+--ACTUALIZAR TRIPS SIN ÉXITO [FUNCIONAL 100%] (EXCEPCIONES INCLUIDAS)
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-updateExc 1 'A Coruña' 'Ciudad Vieja' '2022-08-15 11:00' 20 8"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-updateExc 1 'A Coruña' 'Ciudad Vieja' '2022-07-30 11:00' 20 10"
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-updateExc 4 'A Coruña' 'Día de Playas' '2022-10-25 11:00' 50 80"
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-updateExc 9 'Lugo' 'Paseo Murallas' '2022-08-14 11:00' 10 5"
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-updateExc 2 ' ' 'Casco Histórico' '2022-08-14 11:00' 25 30"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-updateExc 2 'Santiago' ' ' '2022-08-14 11:00' 25 30"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-updateExc 2 'Santiago' 'Casco Histórico' '2022-08-14 11:00' -2 30"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-updateExc 2 'Santiago' 'Casco Histórico' '2022-08-14 11:00' 25 0"
+
+
+
+--CANCELAR BOOKING CON ÉXITO [FUNCIONAL 100%]
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-cancel 3 'user1@udc.es'"
+
+
+
+-- CANCELAR BOOKING SIN ÉXITO [75%] (EXCEPCIONES INCLUIDAS)
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-cancel 3 'user1@udc.es'"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-cancel 4 'user3@udc.es'"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-cancel 2 'user1@udc.es'"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-cancel 9 'user2@udc.es'"
+
+
+
+
+
+
+--BUSCAR TRIPS CON ÉXITO [FUNCIONAL 100%]
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-findExcursions 'A Coruña' '2022-08-01' '2022-12-15'"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-findExcursions 'A Coruña' '2022-08-01' '2022-09-01'"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-findExcursions 'Santiago' '2022-08-01' '2022-09-01'"
+
+
+
+--BUSCAR TRIPS SIN ÉXITO [FUNCIONAL 100%]
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-findExcursions 'Santiago' '2021-08-01' '2021-09-01'"
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-findExcursions ' ' '2022-08-01' '2022-09-01'"
+
+
+
+--BUSCAR BOOKINGS CON ÉXITO [FUNCIONAL 100%]
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-findReservations 'user1@udc.es'"
+
+
+
+--BUSCAR BOOKINGS SIN ÉXITO [FUNCIONAL 100%]
+
+mvn exec:java -Dexec.mainClass="es.udc.ws.app.client.ui.AppServiceClient" -Dexec.args="-findReservations 'user6@udc.es'"
+

@@ -1,0 +1,77 @@
+------------------IDS GRUPO 056------------------
+
+Álvaro Díaz Díaz   ~ alvy1622  (alvaro.ddiaz@udc.es)
+Iago Pérez Díaz    ~ iagopdiaz (iago.pdiaz@udc.es)
+Juan Toirán Freire ~ Juanolas1 (juan.tfreire@udc.es)
+
+Todos hemos colaborado de igual manera a la realización de la práctica,
+a continuación detallamos las partes realizadas por cada uno aunque pueden
+haber sido modificadas por otro para solucionar errores leves o cambios de diseño.
+
+
+----------------------it-1-----------------------
+
+---------------------BOOKING---------------------
+Jdbc3CcSqlBookingDao.java
+create: Iago Pérez Díaz
+
+AbstractSqlBookingDao.java
+find: Juan Toirán Freire
+remove: Iago Pérez Díaz
+update: Álvaro Díaz Díaz
+findBookings: Juan Toirán Freire
+
+-----------------------TRIP----------------------
+Jdbc3CcSqlTripDao.java
+create: Iago Pérez Díaz
+
+AbstractSqlTripDao.java
+find: Juan Toirán Freire
+remove: Iago Pérez Díaz
+update: Álvaro Díaz Díaz
+findTrips: Juan Toirán Freire
+
+-------------------TRIPSERVICE-------------------
+[FUNC-1] addTrip: Juan Toirán Freire
+[FUNC-2] updateTrip: Álvaro Díaz Díaz
+[FUNC-3] findTrips: Iago Pérez Díaz
+[FUNC-4] addBooking: Álvaro Díaz Díaz
+[FUNC-5] cancelBooking:Iago Pérez Díaz
+[FUNC-6] findBookings: Juan Toirán Freire
+
+TESTs: Cada uno de nosotros ha implementado los test que
+se nos iban ocurriendo para los casos posibles.
+
+
+
+
+----------------------it-2-----------------------
+
+-----------------TRIPSERVLET---------------------
+[FUNC-1] doPost: Juan Toirán Freire
+[FUNC-2] doPut: Álvaro Díaz Díaz
+[FUNC-3] doGet: Iago Pérez Díaz
+
+-----------------BOOKINGSERVLET------------------
+[FUNC-4] doPost (POSTEAR): Álvaro Díaz Díaz
+[FUNC-5] doPost (ACTUALIZAR): Iago Pérez Díaz
+[FUNC-6] doGet: Juan Toirán Freire
+
+------------RESTCLIENTTRIPSERVICE----------------
+[FUNC-1] addTrip: Álvaro Díaz Díaz
+[FUNC-2] updateTrip: Álvaro Díaz Díaz
+[FUNC-3] findTrips: Iago Pérez Díaz
+[FUNC-4] addBooking: Iago Pérez Díaz
+[FUNC-5] cancelBooking: Juan Toirán Freire
+[FUNC-6] findBookings: Juan Toirán Freire
+
+
+--------------------THRIFT-----------------------
+Funcionalidades 1-2: Juan Toirán Freire
+
+
+*Recuerdo que puede haber commits de cualquiera de nosotros en todas
+las partes ya que al estar haciendo Pair-Programming en las reuniones que mantuvimos
+para la realización de la práctica, tuvimos que solucionar diversos errores.
+
+
